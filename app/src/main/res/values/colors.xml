@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pulse_teal">#0F766E</color>
+    <color name="pulse_teal_dark">#115E59</color>
+    <color name="pulse_ink">#0B1F1C</color>
+    <color name="pulse_mist">#E7F5F2</color>
+    <color name="ic_launcher_background">#0F766E</color>
+</resources>

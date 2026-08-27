@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pulse ACR Helper</string>
+    <string name="accessibility_service_label">Pulse call detection</string>
+    <string name="accessibility_service_description">Detects phone and VoIP call screens so Pulse ACR can start and stop recordings. No screen content is stored.</string>
+    <string name="helper_channel_name">Helper recording</string>
+</resources>

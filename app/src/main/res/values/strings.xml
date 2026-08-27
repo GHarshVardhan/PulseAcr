@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pulse ACR</string>
+    <string name="recording_channel_name">Call recording</string>
+    <string name="recording_channel_desc">Shown while a call is being recorded</string>
+    <string name="recording_notification_title">Recording call</string>
+    <string name="consent_title">Recording consent</string>
+    <string name="consent_body">Call recording laws vary by country and state. Only record calls when you have a lawful right to do so, and inform other parties when required. Pulse ACR records using the device microphone; remote-party audio quality depends on your device and Android version.</string>
+</resources>
