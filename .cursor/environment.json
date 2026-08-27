@@ -1,0 +1,4 @@
+{
+  "name": "Pulse ACR",
+  "install": "bash .cursor/install.sh"
+}
