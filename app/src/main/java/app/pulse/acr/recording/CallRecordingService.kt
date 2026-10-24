@@ -144,8 +144,8 @@ class CallRecordingService : Service() {
         if (file != null && file.exists() && file.length() > 0L) {
             val app = application as PulseApp
             val number = phoneNumber
-            val contact = number?.let { lookupContactName(it) }
             scope.launch {
+                val contact = number?.let { lookupContactName(it) }
                 app.container.recordingRepository.saveFinishedRecording(
                     file = file,
                     phoneNumber = number,
