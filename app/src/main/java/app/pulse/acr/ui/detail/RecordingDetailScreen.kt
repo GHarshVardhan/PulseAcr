@@ -14,6 +14,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.Button
@@ -35,6 +36,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -51,6 +53,7 @@ fun RecordingDetailScreen(
     viewModel: DetailViewModel = viewModel(factory = DetailViewModel.factory(recordingId))
 ) {
     val recording by viewModel.recording.collectAsStateWithLifecycle()
+    val context = LocalContext.current
     var notes by remember { mutableStateOf("") }
     var playing by remember { mutableStateOf(false) }
     var progress by remember { mutableFloatStateOf(0f) }
@@ -99,6 +102,9 @@ fun RecordingDetailScreen(
                     }
                 },
                 actions = {
+                    IconButton(onClick = { viewModel.shareRecording(context) }) {
+                        Icon(Icons.Filled.Share, contentDescription = "Share")
+                    }
                     IconButton(onClick = { viewModel.toggleStar() }) {
                         val starred = recording?.isStarred == true
                         Icon(

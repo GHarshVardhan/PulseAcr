@@ -4,6 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
+import android.content.Context
+import android.content.Intent
+import androidx.core.content.FileProvider
+import java.io.File
 import app.pulse.acr.PulseApp
 import app.pulse.acr.data.RecordingRepository
 import app.pulse.acr.data.db.RecordingEntity
@@ -41,6 +45,24 @@ class DetailViewModel(
             recordingRepository.updateNotes(recordingId, notes)
             refresh()
         }
+    }
+
+    fun shareRecording(context: Context) {
+        val current = _recording.value ?: return
+        val file = File(current.filePath)
+        if (!file.exists()) return
+
+        val uri = FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.fileprovider",
+            file
+        )
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "audio/*"
+            putExtra(Intent.EXTRA_STREAM, uri)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        context.startActivity(Intent.createChooser(intent, "Share recording"))
     }
 
     fun delete(onDone: () -> Unit) {
